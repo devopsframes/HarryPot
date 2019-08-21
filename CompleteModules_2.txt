@@ -1,0 +1,110 @@
+toDebugString :
+--------------
+val a1 = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"), 2)
+val b1 = a.map(x2 => (x2,x2.length))
+val c1= b.reduceByKey(_ + _)
+c1.toDebugString
+
+val a2 = sc.parallelize(1 to 20)
+val b2 = sc.parallelize(1 to 15)
+a2.union(b2).toDebugString
+
+Spark Configurations:
+---------------------
+
+Running the jobs from command line need to set the parameters and run the job
+
+./bin/spark-submit --help // give the options to be used to run while doing it from command line
+
+Running Locally:
+--------------
+./bin/spark-submit --class com.skillspeed.courses.SparkWordCount \
+--master local[2] \
+--executor-memory 5G \
+/Users/jayantkumar/SkSp_Training/Spark_Scala/Module8/SkillSpeed/ProjectDemo/target/scala-2.11/spark_word_count_2.11-0.0.0.jar \
+/Users/jayantkumar/Desktop/Files/readFile.txt 2
+
+--driver-java-options -XX:MaxPermSize=256m 
+In a Cluster:
+-----------
+./bin/spark-submit \
+  --class <full path to Class Name including the package> \
+  --master spark://<IP Address>:<Port> \
+  --deploy-mode cluster
+  --executor-memory 5G \
+  --total-executor-cores 16 \
+  <Jar file Path> \
+
+
+Spark SQL on Hive 
+-----------------
+val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
+sqlContext.sql("CREATE TABLE IF NOT EXISTS test (name STRING, rank INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'")
+sqlContext.sql("LOAD DATA LOCAL INPATH '/Users/jayantkumar/Desktop/Files/skillspeed.txt' INTO TABLE test")
+sqlContext.sql("SELECT * FROM test WHERE rank < 15").collect().foreach(println)
+
+
+
+Cache & Persist() Example:
+------------------
+val a3 = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"))
+val b3 = a3.map(x => (x,x.length))
+val c3 = b3.map(x =>  (x._1, x._2*2))
+c3.cache
+val d3 = c3.filter(x => x._2 % 2 == 0)
+val e3 = d3.map(x => (x._1, x._2*2))
+e3.count
+
+val a = sc.parallelize(1 to 10, 2)
+a.persist(org.apache.spark.storage.StorageLevel.DISK_ONLY)
+println(a.count())
+println(a.collect().mkString(","))
+
+
+
+
+
+###################################
+#####==== Graph Analytics  ====####
+###################################
+
+
+import org.apache.spark.graphx._
+import org.apache.spark.rdd.RDD
+
+val vertexArray = Array( 
+  (1L, ("Alice", 28)),
+  (2L, ("Bob", 27)),
+  (3L, ("Charlie", 65)),
+  (4L, ("David", 42)),
+  (5L, ("Ed", 55)),
+  (6L, ("Fran", 50))
+  )
+  
+val vertexArray = Array( (1L, ("Alice", 28)), (2L, ("Bob", 27)), (3L, ("Charlie", 65)), (4L, ("David", 42)),(5L, ("Ed", 55)), (6L, ("Fran", 50)))
+val edgeArray = Array(
+  Edge(2L, 1L, 7),
+  Edge(2L, 4L, 2),
+  Edge(3L, 2L, 4),
+  Edge(3L, 6L, 3),
+  Edge(4L, 1L, 1),
+  Edge(5L, 2L, 2),
+  Edge(5L, 3L, 8),
+  Edge(5L, 6L, 3)
+  )
+val edgeArray = Array(Edge(2L, 1L, 7),  Edge(2L, 4L, 2),  Edge(3L, 2L, 4),Edge(3L, 6L, 3),Edge(4L, 1L, 1),Edge(5L, 2L, 2),Edge(5L, 3L, 8),Edge(5L, 6L, 3))  
+
+val vertexRDD: RDD[(Long, (String, Int))] = sc.parallelize(vertexArray)
+val edgeRDD: RDD[Edge[Int]] = sc.parallelize(edgeArray)
+
+val graph: Graph[(String, Int), Int] = Graph(vertexRDD, edgeRDD)
+
+graph.vertices.filter(v => v._2._2 > 30).collect.foreach(v => println(s"${v._2._1} is ${v._2._2}"))
+
+for (triplet <- graph.triplets.collect) {
+  println(s"${triplet.srcAttr._1} likes ${triplet.dstAttr._1}")
+}
+
+val inDegrees: VertexRDD[Int] = graph.inDegrees
+
+

@@ -1,0 +1,40 @@
+spark-submit --class sathya --number-executors 12  --ececutor-cores  --executor-memory
+
+
+for  Yarn-1 core
+	Am-1 executor- 1024 memory
+	5 tasks per executor so 1 executor=max 5 cores
+	
+	
+	
+	**Cluster Config:**
+10 Nodes
+16 cores per Node
+64GB RAM per Node
+
+yarn -1 core per node ie 16-1=15
+Total number of cores =10 *15=150
+5 cores per executor so number of available executors 150/5=30
+leaving 1 executor for AM  ie 30-1=29
+no nodes and available executors  ie 29/10~=3
+memory per executor is 64/3=21 GB
+counting of heap overhead ie 7%of 21GB=3GB, so actual --executor memory =21-3 =18 GB
+
+
+spark-submit --class sathya --number-executors 29 --executor-core 5 --executor-memory 18GB
+
+
+	**Cluster Config:**
+10 Nodes
+16 cores per Node
+64GB RAM per Node
+
+
+1 core for yarn for each node 16-1=15
+total core 15*10=150
+max 5 cores for each executor so 150/5 =30 executors
+30/10 nodes so each node contains 3 executors
+64GB/3 ie 21 GB for each executor but 7% for heap over head so 21/7=3 ie 21-3=18GB for each 
+1 executor for Application master
+
+spark-submit --class sathya.scala --number-executors 29 executor-core 5 executor-memory 18GB

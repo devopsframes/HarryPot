@@ -1,0 +1,1044 @@
+All Modules till Module 7 added here:
+-------------------------------------
+=========================
+Module 2 Commands Execution Steps:
+==================================
+
+scala> "Hello SkillSpeed"
+
+scala> 10
+
+scala> 3.5
+
+scala> "2" + "5"
+
+scala> 9 + "Hello"
+
+scala> var x = 9
+
+scala> var y = "Hello"
+
+scala> x + y
+
+scala> var myvar = "Welcome"
+
+scala> val add = {val a = 10;val b = 20; a+b}
+
+scala> {val a = 30; val c = 40; val d = 50}
+
+scala> {val a = 30; val c = 40; println("Hello Scala")}
+
+scala> val d = {val a = 30; val c = 40; println("Hello Scala")}
+
+scala> val file = scala.io.Source.fromFile("file.txt").mkString
+
+scala> lazy val file = scala.io.Source.fromFile("file.txt").mkString
+
+============
+While Loops:
+===========
+
+scala> var x = 5
+
+while(x<10)  {
+ println("Value of x : " + x)
+  x = x+1
+ }
+ 
+ scala> while(x <10) {
+        println("Value of x " + x)
+        x = x++
+        
+       }
+       
+ scala> do { 
+ 	x = x+1
+ 	print("value of x " + x)
+ 	} while(x < 5)
+ 	
+ 	
+======================== 	
+For each loop in Scala:
+======================= 	
+ 	
+scala> var args = "Welcome"
+ 	      
+scala> args.foreach(arg => println(arg))
+
+scala> 1 to 5 
+
+scala> Range(1,10)
+
+scala> 1 until 10
+
+scala> for( x <- 1 to 5) { println("x is " + x) }
+
+scala> for(x <- 1 until 5) { println("x is : " + x) }
+
+scala> val txt = "SkillSpeed"
+
+scala> var sum = 0
+
+scala> for(i <- 0 until txt.length) sum += i
+
+scala> println(sum)
+
+scala> for(i <- 1 to 3; j <- 1 to 3) println(5*i + j+1)
+
+scala> for(i <- 1 to 3; j <- 1 to 3; k <- 1 to 5) println("Total value is " + i + j + k)
+
+====================
+For loop with yield
+====================
+
+scala> val x = for(i <- 1 to 10) yield i*5
+
+scala> for( i <- x) println(i)
+
+====Functions in Scala ==========
+
+scala> def myFun(empNo : Int , empName : String) = { 
+		println("Employee Name is : " + empName)
+		println("Employee Number is : " + empNo)
+	   }	
+	   
+scala> myFun(2500,"Rahul")
+
+scala> def defaultFun(empName : String , cName : String = "SkillSpeed") = {
+		println("Employee Name is " + empName)
+		println("Company Name is " + cName)
+	   }
+	   
+scala> defaultFun("JoshMack")
+
+=============
+Collections:
+=============
+
+scala> val numbers = Array(1,2,3,4)
+
+scala> val courses = Array("Scala","Python","Java")
+
+scala> numbers(3)
+
+scala> courses(1)
+
+scala> var myIntArray = new Array[Int](10)
+
+scala>val myStrArray = new Array[String](5)
+
+scala> val myArray = Array("Hello", "Welcome")
+
+==== Array Buffers ======
+
+scala> import scala.collection.mutable.ArrayBuffer
+
+
+scala> var cars = new ArrayBuffer[String]()
+
+scala> cars += "BMW"
+
+scala> cars += "Jaguar"
+
+scala> cars += "Audi"
+
+scala> cars += "RollsRoyce"
+scala> println(cars.length)
+
+scala> cars.trimEnd(1)
+
+scala> cars
+
+scala> cars.insert(2,"Bentley")
+
+scala> cars.insert(1, "Fiat","Volvo", "Reanult")
+
+scala> cars
+
+scala>cars.remove(3)
+
+scala> cars.remove(1,3)
+
+==== Maps =========
+
+scala> var mapping = Map("NY" -> "New York", "NJ" -> "New Jersey")
+
+scala> var x = mapping("NY")
+
+scala> var xVal = mapping("New Jersey")
+
+scala> mapping.	getOrElse("NY", "???")
+
+scala> mapping.getOrElse("New Jersy","???")   
+
+scala> val testVal = mapping.getOrElse("NY", 0)	
+
+scala> val otherVal = mapping.getOrElse("NJ",0)
+
+
+================Mutable Maps===============
+
+var states = scala.collection.mutable.Map[String,String]()
+
+var states = scala.collection.mutable.Map("NY" -> "New York","WY" -> "Wyomming")	   
+
+states += ("CA" -> "California","NJ" -> "New Jersey")
+
+states -= ("WY")
+
+states("NY") = "New York, The Big State"
+
+states
+
+==================== Tuples ==============================
+
+scala> var tupleEx = (101, "Robert" , 25000.00)
+
+scala> tupleEx._1
+
+scala> tupleEx._2
+
+scala> tupleEx._3
+
+scala> "skiLlspEed".partition(_.isUpper)
+
+scala> "skiLlspEed".partition(_.isLower)
+
+===================== Lists ============================
+
+scala> var numList = List(1,2,3,4)
+
+scala> val empList = List()
+
+scala> numList.head
+
+scala> numList.tail
+
+scala> 1 :: List(2,3)
+
+scala> def sum(l : List[Int]) : Int = { if (l == Nil) 0 else l.head + sum(l.tail)}
+
+scala > val y = sum(numList)
+
+Module 3 :
+==========
+
+============Classes===================
+
+scala > class MyClass {}
+
+scala > class Employee { 
+		private var empNo = 0
+		var empName = null
+		def displayName(empNo : Int, empName : String) {
+			println("Employee Number is : " + empNo)
+			println("Employee Name is : " + empName)
+		}
+		}
+		
+scala> var emp1 = new Employee()
+
+scala> emp1.displayName(123556,"Robert")
+
+//defining the getters and setters 
+scala> class Person() {
+		
+			private var _age = 0
+			var name = ""
+			def age = _age
+			def age_ (value : Int) : Unit = {_age = value}
+		}			
+		
+scala> class Employee {
+		 
+		   var empNo = 20
+		}
+		
+scala> emp.empNo = 10
+
+scala> println(emp.empNo)
+
+scala> class Employee(val name : String)
+
+scala> val emp = new Employee("Rajat")
+
+scala> println(emp.name) 		
+
+scala> emp.name = "Harsha"		
+		 
+		 
+============= Auxillary Constructors =================
+
+scala> class Person  {
+	      
+	       var firstName : String = _
+	       var lastName : String = _
+	       
+	       def this(firstName : String) {
+	         this()
+	         this.firstName = firstName
+	       }
+	       
+	       def this(firstName: String , lastName : String) {
+	          this(firstName)
+	          this.lastName = lastName
+	       }
+	    }     
+
+scala> var per = new Person("Vijay")
+
+scala> per.firstName
+
+scala> per.lastName
+
+scala> per.lastName = "Kumar"
+
+scala> per.firstName
+
+scala> per.lastName
+
+scala> var per1 = new Person("Ram","Kumar")
+
+scala> per1.firstName
+
+scala> per1.lastName
+
+
+======================== Nested Classes ========================================	    
+
+scala> import scala.collection.mutable.ArrayBuffer
+	       		 
+scala> class Graph {
+			class Member (val name : String) {
+			      val contacts = new ArrayBuffer[Member]
+			 }
+	     private val members = new ArrayBuffer[Member]
+	     
+	     def join(name:String) = {
+	     	val m = new Member(name)
+	     	members += m
+	     	m
+	     }
+	   } 
+	   
+scala>val twitter = new Graph
+
+scala>val facebook = new Graph 
+	  
+scala>val twitt_Person1 = twitter.join("Twitter_Person1")
+
+scala>val twitt_Person2 = twitter.join("Twitter_Person2")
+
+scala>val twitt_Person3 = twitter.join("Twitter_Person3")
+
+scala>twitt_Person1.contacts += twitt_Person2
+
+scala>twitt_Person1.contacts += twitt_Person3
+
+scala>val fb_Person1 = facebook.join("fb_Person1")    
+
+scala>val fb_Person2 = facebook.join("fb_Person2")
+
+scala>val fb_Person3 = facebook.join("fb_Person3")
+
+scala>fb_Person1.contacts += fb_Person2
+
+scala>fb_Person1.contacts += fb_Person3
+
+scala>twitt_Person1.contacts += fb_Person1
+
+
+=================== Singleton Objects===========================================	   
+	    			      				  
+object IncrementerObj {
+  
+  private var lastId = 0
+  
+  def newUniqueId = {
+    lastId += 1; 
+    lastId
+  }
+}   	
+
+scala> val id1 = IncrementerObj.newUniqueId
+
+scala> val id2 = IncrementerObj.newUniqueId
+		   		
+		
+================ Companion Objects ==============================================	
+
+class Welcome {
+  
+  def printMessage(message :String) {
+    println("Message is == > " + message)
+  }
+}	
+
+object Welcome { // The Companion Object
+   def printString(message : String) {
+     println("String is == > " + message)
+   }
+}
+
+
+==================Apply Method ====================
+
+class Array{
+	def get(index:Int) = {print(index)}
+	def apply(index:Int) = get(index)
+}	
+
+scala> var x = new Array()
+
+scala> x.get(2)
+
+scala> x.apply(2)
+
+
+
+Module 4
+========
+
+======================== Traits as maxins =================================
+
+trait Person {
+
+	def emp() = {println("Hello, This is a Person trait")}
+}
+
+
+trait Person {
+	def emp (empNo :Int)
+	def empRole (eRole : String) = {println("It a person who is analyst") }
+}
+
+====== traits as interfaces ===================
+
+trait Person {
+	def pName() { println("I am Robert") }
+}
+
+class Emp extends Person {
+	def eRole () {println("I am a Analyst")}
+}	
+	
+	
+scala> var ob = new Person()
+
+scala> var ob = new Emp()
+
+scala> ob.pName()
+
+==================  Multiple traits with a Class =======================
+
+trait B1 {
+    def print() { println("B1") }
+}
+
+
+trait A extends B1 {
+    override def print() { println("A"); super.print() }
+}
+
+trait B extends B1 {
+    override def print() { println("B"); super.print() }
+}
+
+class B2 {
+    def print() { println("B2") }
+}
+
+class C extends B2 with A with B {
+    override def print() { println("C"); super.print() }
+}
+
+var clsC = new C
+clsC.print
+
+
+
+
+trait Base {
+    def msg = "Base"
+}
+
+trait SampleA extends Base {
+    override def msg = "SampleA -> " + super.msg
+}
+
+trait SampleB extends Base {
+     override def msg = "SampleB -> " + super.msg
+}
+
+trait SampleC extends Base {
+    override def msg = "SampleC -> " + super.msg
+}
+
+class TestClass extends Base with SampleA with SampleB with SampleC {
+    override def msg = "TestClass -> " + super.msg
+}
+
+var testCls = new TestClass
+testCls.msg
+======================== Functional Programming ================================
+============
+Example 1:
+============
+
+val triple : (Int) => Int = (i) => { 
+     var j = i + 3
+     i * 3
+    }
+
+scala> triple(5)
+
+============
+Example 2:
+============
+
+val addAndDouble : (Int, Int,Int) => Int = (a,b,c) => {
+    val res = a + b +c
+    2*res
+  }
+  
+scala> addAndDouble(5,4,8)  
+
+
+scala > def add(a:Int , b:Int) : Int = {if (a>b) 1 else a + add(a+1,b) }
+
+
+scala> def square(x:Int) : Int = x*x
+
+scala> def sumSquares(a:Int, b:Int) : Int = {if (a>b) 1 else square(a) + sumSquares(a+1,b) }  
+
+scala> def factorial(n:Int) : Int = {
+         if(n==0) 
+         	return 1
+         else 
+         	return n* factorial(n-1)
+       }  	
+      
+scala> def sumFact(x:Int, y:Int):Int = {if (x>y) 0 else factorial(x) + sumFact(x+1,y) } 
+
+
+===================Summing with Higher Order Functions ========================= 
+
+
+
+scala> def sum(f:Int => Int , a:Int , b:Int): Int = if (a>b) 0 else f(a) + sum(f,a+1,b)
+
+scala>  def sumSquares(a:Int, b:Int) = sum(square,a,b)
+
+scala> def sumFact(a:Int, b:Int) = sum(factorial, a ,b) 
+ 
+ 
+ 4377484634114626
+sbin00cards
+
+narrow transformation -one which has single pipeline and it is not using other partitions in order to perform operations 
+
+wide transformation -where we need to interact with other partition
+
+spark flow with scheduler component
+
+================================
+Useful Higher Order Functions:
+================================
+
+scala> (1 to 10).map(x => x * 0.1)
+
+scala> (1 to 10).map(_ * 0.1)
+
+scala> val a1 = (1 to 10).map(x => "*" * x)
+
+scala> a1.foreach(y => println(y))
+
+scala> (1 to 10).map("*" * _).foreach(println _)
+
+scala>(1 to 10).map("*" * _).foreach(println)
+
+filter
+======
+
+(1 to 15).filter(x => (x % 2 == 0))
+
+
+(1 to 15).filter(_ % 2 == 0)
+
+sort function:
+==============
+
+val strVal = "Twinkle Twinkle Little Star".split(" ")
+
+val sortStr = strVal.sortWith(_.length < _.length)
+
+
+Anonymous Function:
+==================
+(x:Int) => x * x * x 
+
+(x:Int , y:Int) => x + y  
+
+val sum  = (x:Int,y:Int) => x+y : Int	
+
+Functions Type 1:
+=================
+Example 1:
+===========
+
+def runFunction(f:() => Unit) {
+     f()
+}
+
+val printWelcome = () => {println("Welcome to Scala")}
+
+scala>runFunction(printWelcome)
+
+Example 2:
+==========
+
+def runNTimes(g:() => Unit, numTimes:Int) {
+      for (a <- 1 to numTimes ) g() 
+}
+
+scala>runNTimes(printWelcome, 5)
+
+Example 3:
+==========
+
+def runAndPrintMessage(h:(Int,Int) => Int, x :Int, y:Int) : Int = {
+     val result = h(x,y)
+     println(result)
+     result
+}
+
+scala> val sum  = (x:Int,y:Int) => x+y : Int
+scala> val multiply = (x: Int, y: Int) => x * y
+
+scala> runAndPrintMessage(sum, 4, 5)
+scala> runAndPrintMessage(multiply,5,6)
+
+Functions deducing types 
+=========================
+
+def create(func:Double => Double) = func(0.25)
+
+scala> create(func => func + 5)
+
+scala> create(func => func * 5)
+
+=========
+Closures:
+=========
+
+val multiplier = (a:Int) => a * 2
+
+scala> multiplier(4)
+
+
+scala> var b = 3
+scala>val multiplier_clos = (a:Int) => a * b
+scala>val multiplier_clos = (a:Int) => a * b
+scala> println(multiplier_clos(2))
+
+scala> var votingAge = 18
+scala> val isItVotingAge_clos = (age:Int) => age >= votingAge
+scala> isItVotingAge_clos(16)
+scala> isItVotingAge_clos(20)
+
+==========
+Currying:
+==========
+
+val multiply = (a:Int,b:Int) => a * b
+
+def multiply_curry(a:Int)(b:Int) = { a * b }
+scala>println(multiply_curry(10)(20))
+
+
+def multiplyCurry_trans(a:Int) = (b:Int) => { a + b } 
+scala> multiplyCurry_trans(2)(3)
+
+Call by Name and Call by Value:
+================================
+
+def funcByValue(x : Unit) = {
+    for (i <- 0 until 5) {
+      print(x)
+    }
+  }
+  
+scala> var i = 0
+scala> funcByValue(i = i + 1)
+scala> print(i)
+
+
+def funcByName(x : => Unit) = {
+    for (i <- 0 until 5) {
+      print(x)
+    }
+}  
+
+scala> var i = 0
+scala> funcByName(i = i + 1)
+scala> print(i)
+ 
+ 
+======================================
+Modules 5 
+===================================== 
+ 
+loading a spark shell - ./bin/spark-shell
+scala>sc
+
+
+val keywords = Array("Scala","Spark", "Morning", "Skillspeed")
+val rdd1 = sc.parallelize(keywords)
+rdd1.collect.foreach(println)
+
+=======================================================================
+
+val numRdd = sc.parallelize(List(1,2,3,4,5))
+val filteredRdd = numRdd.filter(_ % 2 == 1)
+filteredRdd.collect.foreach(println)
+
+
+Reading data using parallelize
+================================
+val inputMap = sc.parallelize(List(1,2,3,4))
+val result = inputMap.map(x => x*x)
+
+Basic Operation on a file:
+==========================
+scala>val input = sc.textFile("CHANGES.txt")
+
+scala> input.count()
+
+scala> input.first()
+
+scala> val linesWithSpark = input.filter(line => line.contains("Spark"))
+
+scala> linesWithSpark.count()
+
+
+
+PySpark Shell
+=============
+./bin/pyspark
+
+>>> sc
+
+>>>lines = sc.textFile("CHANGES.txt")
+
+>>>lines.count()
+
+>>>
+
+Reading Input file :
+-------------------
+
+scala>val inputLines = sc.textFile("/Users/jayantkumar/Desktop/Files/readFile.txt")
+
+scala> inputLines.count()
+
+scala> inputLines.first()
+
+scala>val words = inputLines.flatMap(line => line.split(" "))
+
+scala>val wMap = words.map(word => (word,1))
+
+scala> wMap.first
+
+
+scala>val wOutput  = wMap.reduceByKey(_ + _)
+
+scala> wOutput.first
+
+============================================
+Module 6 Spark Transformations and Actions: |
+=============================================
+ 
+======================
+Spark Transformations:|
+======================
+map,flatMap,filter,distinct,sample,mapValues,flatMapValues
+reduceByKey,groupByKey,sortByKey
+
+Map Operation:
+---------------
+val inpPar = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"), 2)
+val lenRdd = inpPar.map(_.length)
+val zipRdd = inpPar.zip(lenRdd)
+zipRdd.collect
+
+inpPar.partitions.length
+
+
+flatMap Transformation:
+-----------------------
+val inp1 = sc.parallelize(1 to 10, 2)
+val mapRdd = inp1.flatMap(1 to _)
+mapRdd.collect
+
+filter Operation:
+-----------------
+val inp2 = sc.parallelize(1 to 10, 2)
+val filterRdd = inp2.filter(_ % 2 == 0)
+inp2.collect
+
+Distinct:
+----------
+val inpDistinct = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala", "Hello","Hello","World", "Welcome", "to", "scala"), 2)
+inpDistinct.distinct.collect
+
+Sample:
+-------
+val sampleRdd = sc.parallelize(1 to 100, 3)
+sampleRdd.sample(false, 0.3, 0).count // Selects a fractions of them and the seed is set.
+
+mapValues:
+---------
+
+val a = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"), 2)
+val b = a.map(x1 => (x1.length, x1))
+b.mapValues("prefix - " + _ + " - suffix").collect
+
+flatMapValues: //collapses the inherent structure of the values during mapping
+--------------
+val a = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"), 2)
+val b = a.map(y => (y.length, y))
+b.flatMapValues("prefix - " + _ + " - suffix").collect
+
+
+reduceByKey:
+------------
+val a = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala","Hello", "World"), 2)
+val b = a.map(x2 => (x2,x2.length))
+b.reduceByKey(_ + _).collect
+
+
+groupByKey:
+-----------
+val a = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala","all","the","but","Hello", "World", "Welcome", "to", "scala"), 2)
+val b = a.keyBy(_.length)
+b.groupByKey.collect
+
+
+filterByRange:
+-------------
+val randRDD = sc.parallelize(List( (2,"all"), (6, "but"),(7, "between"), (3, "there"), (4, "here"), (1, "where"), (5, "everywhere")), 2)
+val sortedRDD = randRDD.sortByKey()
+sortedRDD.filterByRange(1, 3).collect
+
+
+===============
+Spark Actions:|
+===============
+takeOrdered,first,count,collect,collectAsMap,foreach,countByKey
+
+
+takeOrdered:
+------------
+
+val b = sc.parallelize(List("here", "all", "there", "but", "catch"), 2)
+b.takeOrdered(2)
+
+val b1 = sc.parallelize(List(5,6,8,22,31,1,3,4), 2)
+b1.takeOrdered(2)
+
+first:
+------
+val c = sc.parallelize(List("here", "all", "there", "but", "catch"), 2)
+c.first
+
+count:
+------
+val c1 = sc.parallelize(List("here", "all", "there", "but", "catch"), 2)
+c1.count
+
+collect:
+--------
+val a = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala"), 2)
+val b = a.map(x2 => (x2,x2.length))
+b.reduceByKey(_ + _).collect
+
+collectAsMap:
+-------------
+val a = sc.parallelize(List(1, 2, 1, 3), 1)
+val b = a.zip(a)
+b.collectAsMap
+
+foreach:
+--------
+val c = sc.parallelize(List("Hello", "World", "Welcome", "to", "scala","all","the","but"))
+c.foreach(x => println(x))
+
+countByKey:
+----------
+val c = sc.parallelize(List((3, "all"), (3, "the"), (5, "Where"), (3, "Not")), 2)
+c.countByKey
+
+
+=========================================================
+Spark Pair Rdd Operations (Joins, Union and Intersection)
+=========================================================
+Join:
+------
+
+val x = sc.parallelize(List(("Hello", 1), ("World", 4),("Scala",3)))
+val y = sc.parallelize(List(("Hello", 2), ("Hello", 3),("World",2)))
+x.join(y).collect()
+
+
+val a = sc.parallelize(List("hello", "some", "some", "rat", "elephant"), 3)
+val b = a.keyBy(_.length)
+val c = sc.parallelize(List("hello","cat","gnu","some","rabbit","turkey","wolf","bear","bee"), 3)
+val d = c.keyBy(_.length)
+b.join(d).collect
+
+
+
+
+Left Outer Join:
+----------------
+
+val pairRDD1 = sc.parallelize(List( ("clear",21), ("spark", 15), ("realtime", 4),("poles", 12)))
+val b1 = pairRDD1.keyBy(_.length)
+val pairRDD2 = sc.parallelize(List( ("clear",21), ("scala", 15), ("batch", 4),("poles", 12)))
+val b2 = pairRDD2.keyBy(_.length)
+b1.leftOuterJoin(b2).collect
+
+
+val x = sc.parallelize(List(("a", 1), ("b", 4)))
+val y = sc.parallelize(List(("a", 2)))
+x.leftOuterJoin(y).collect()
+
+Right Outer Join:
+-----------------
+
+val pairRDD1 = sc.parallelize(List( ("clear",21), ("spark", 15), ("realtime", 4),("poles", 12)))
+val b1 = pairRDD1.keyBy(_.length)
+val pairRDD2 = sc.parallelize(List( ("clear",21), ("scala", 15), ("batch", 4),("poles", 12)))
+val b2 = pairRDD2.keyBy(_.length)
+b1.rightOuterJoin(b2).collect
+
+val x = sc.parallelize(List(("a", 1), ("b", 4)))
+val y = sc.parallelize(List(("a", 2)))
+x.rightOuterJoin(y).collect()
+
+
+Array[(String, (Int, Option[Int]))] = Array((a,(1,Some(2))), (b,(4,None)))
+Array[(String, (Option[Int], Int))] = Array((a,(Some(1),2)))
+
+Full Outer Join:
+----------------
+val pairRDD1 = sc.parallelize(List( ("clear",21), ("spark", 15), ("realtime", 4),("poles", 12)))
+val pairRDD2 = sc.parallelize(List( ("clear",21), ("scala", 15), ("batch", 4),("poles", 12)))
+pairRDD1.fullOuterJoin(pairRDD2).collect
+
+Array((spark,(Some(15),None)), (clear,(Some(21),Some(21))), (scala,(None,Some(15))), (batch,(None,Some(4))), (poles,(Some(12),Some(12))), (realtime,(Some(4),None)))
+
+
+Intersection:
+-------------
+
+val x = sc.parallelize(1 to 20)
+val y = sc.parallelize(10 to 30)
+val z = x.intersection(y)
+
+Subtract:
+---------
+
+val a = sc.parallelize(1 to 9, 3)
+val b = sc.parallelize(1 to 3, 3)
+val c = a.subtract(b)
+
+SubtractByKey:
+----------------
+
+val a = sc.parallelize(List("dog", "tiger", "lion", "cat", "spider", "eagle"), 2)
+val b = a.keyBy(_.length)
+val c = sc.parallelize(List("ant", "falcon", "squid"), 2)
+val d = c.keyBy(_.length)
+b.subtractByKey(d).collect 
+
+==================
+Module 7 Spark SQL 
+===================
+ ==========
+|Spark SQL:|
+ ==========
+
+Spark SQL - Using Case Classes 
+-------------------------------------------------
+
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+import sqlContext.implicits._
+
+case class Person(name: String, age: Int)
+
+val people = sc.textFile("/Users/jayantkumar/Desktop/Files/people.txt").
+                 map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt)).toDF()
+
+people.registerTempTable("people")
+
+val teenagers = sqlContext.sql("SELECT name, age FROM people WHERE age >= 13 AND age <= 19")
+
+teenagers.map(t => "Name: " + t(0)).collect().foreach(println)
+
+teenagers.map(t => "Name: " + t.getAs[String]("name")).collect().foreach(println)
+
+teenagers.map(_.getValuesMap[Any](List("name", "age"))).collect().foreach(println)
+
+
+Spark SQL -- Specifying the Schema
+-----------------------------------
+
+val people = sc.textFile("/Users/jayantkumar/Desktop/Files/people.txt")
+
+val schemaString = "name,age"
+
+import org.apache.spark.sql.Row;
+
+import org.apache.spark.sql.types.{StructType,StructField,StringType}
+
+val schema = StructType(schemaString.split(",").map(fieldName => StructField(fieldName, StringType, true)))
+
+val rowRDD = people.map(_.split(",")).map(p => Row(p(0), p(1).trim))
+
+val peopleDataFrame = sqlContext.createDataFrame(rowRDD, schema)
+
+peopleDataFrame.registerTempTable("people")
+
+val results = sqlContext.sql("SELECT name FROM people")
+
+results.map(t => "Name: " + t(0)).collect().foreach(println)
+
+val teenagers = sqlContext.sql("SELECT name, age FROM people WHERE age >= 13 AND age <= 19")
+
+teenagers.map(t => "Name: " + t(0)).collect().foreach(println)
+
+teenagers.map(t => "Name: " + t.getAs[String]("name")).collect().foreach(println)
+
+
+Spark SQL --- Reading the JSON file and creating Data Frames:
+--------------------------------------------------------
+
+val df = sqlContext.read.json("/Users/jayantkumar/Desktop/Files/people.json")
+df.show()
+df.printSchema()
+df.select("name").show()
+df.select(df("name"), df("age") + 1).show()
+df.filter(df("age") > 21).show()
+df.groupBy("age").count().show()  
+
+
+Spark SQL - Reading CSV files with header while starting the Spark Shell
+-------------------------------------------------------------------------
+
+./bin/spark-shell --packages com.databricks:spark-csv_2.11:1.1.0  
+
+val df = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").load("/Users/jayantkumar/Desktop/Files/salesJan2009.csv")
+
+df.printSchema()
