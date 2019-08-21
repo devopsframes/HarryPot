@@ -1,0 +1,4 @@
+RDD-->Resilient Distributed Object
+spark object is called RDD,RRDs are subdivided into partitions and these partitions are distributed across multiple worker nodes 
+RDDs are loaded into RAM and computed at RAM.
+if RDD has multiple partitions, this computation will happen in parallel.
